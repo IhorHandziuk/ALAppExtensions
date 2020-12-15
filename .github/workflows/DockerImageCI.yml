@@ -33,7 +33,7 @@ jobs:
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}    
-        run: >
+        run: > |
           $Content = '<?xml version="1.0" encoding="utf-8"?>'
           $Content += '<configuration>'
           $Content += '  <packageSources>'
