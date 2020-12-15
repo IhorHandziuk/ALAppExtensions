@@ -12,6 +12,7 @@ codeunit 8901 "Email"
 
     #region SaveAsDraft
 
+
     procedure NewEmailFunctionality()
     begin
         // do something great
