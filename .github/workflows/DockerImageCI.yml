@@ -33,23 +33,23 @@ jobs:
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}    
-        run: > |
-          $Content = '<?xml version="1.0" encoding="utf-8"?>'
-          $Content += '<configuration>'
-          $Content += '  <packageSources>'
-          $Content += '    <add key="Dynamics NAV nuget feed" value="https://dynamicssmb2.pkgs.visualstudio.com/_packaging/DynamicsSMBPackages/nuget/v3/index.json" protocolVersion="3" />'
-          $Content += '  </packageSources>'
-          $Content += '  <packageSourceCredentials>'
-          $Content += '    <Dynamics_NAV_nuget_feed>'
-          $Content += '        <add key="Username" value="$USERNAME" />'
-          $Content += '        <add key="Password" value="$PASSWORD" />'
-          $Content += '    </Dynamics_NAV_nuget_feed>'
-          $Content += '   </packageSourceCredentials>'
-          $Content += '   <packageRestore>'
-          $Content += '        <add key="enabled" value="True" />'
-          $Content += '    </packageRestore>'
-          $Content += '</configuration>'
-          Set-Content config $Content
-          docker cp config bcdev:/config
-          docker exec -it bcdev powershell.exe $Env:GITHUB_WORKSPACE\CI\dockerscript.ps1
+        run: > 
+          $Content = '<?xml version="1.0" encoding="utf-8"?>';
+          $Content += '<configuration>';
+          $Content += '  <packageSources>';
+          $Content += '    <add key="Dynamics NAV nuget feed" value="https://dynamicssmb2.pkgs.visualstudio.com/_packaging/DynamicsSMBPackages/nuget/v3/index.json" protocolVersion="3" />';
+          $Content += '  </packageSources>';
+          $Content += '  <packageSourceCredentials>';
+          $Content += '    <Dynamics_NAV_nuget_feed>';
+          $Content += '        <add key="Username" value="$USERNAME" />';
+          $Content += '        <add key="Password" value="$PASSWORD" />';
+          $Content += '    </Dynamics_NAV_nuget_feed>';
+          $Content += '   </packageSourceCredentials>';
+          $Content += '   <packageRestore>';
+          $Content += '        <add key="enabled" value="True" />';
+          $Content += '    </packageRestore>';
+          $Content += '</configuration>';
+          Set-Content config $Content;
+          docker cp config bcdev:/config;
+          docker exec -it bcdev powershell.exe $Env:GITHUB_WORKSPACE\CI\dockerscript.ps1;
         shell: powershell
