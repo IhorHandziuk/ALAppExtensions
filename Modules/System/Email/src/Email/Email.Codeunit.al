@@ -12,6 +12,11 @@ codeunit 8901 "Email"
 
     #region SaveAsDraft
 
+    procedure NewEmailFunctionality()
+    begin
+        // do something great
+    end;
+
     /// <summary>
     /// Saves a draft email in the Outbox.
     /// </summary>
