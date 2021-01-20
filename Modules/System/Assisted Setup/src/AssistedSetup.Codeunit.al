@@ -17,6 +17,11 @@ codeunit 3725 "Assisted Setup"
     begin
         AssistedSetupImpl.Add(ExtensionID, PageID, AssistantName, GroupName, '', "Video Category"::Uncategorized, '', '');
     end;
+    
+    procedure Add2(ExtensionID: Guid; PageID: Integer; AssistantName: Text; GroupName: Enum "Assisted Setup Group")
+    begin
+        AssistedSetupImpl.Add(ExtensionID, PageID, AssistantName, GroupName, '', "Video Category"::Uncategorized, '', '');
+    end;
 
     /// <summary>Adds an assisted setup record from a given extension so that it can be shown in the list.</summary>
     /// <param name="ExtensionID">The app ID of the extension to which the setup belongs.</param>
