@@ -110,7 +110,7 @@ codeunit 8901 "Email"
     /// <param name="EmailMessage">The email message to use as payload.</param>
     /// <param name="EmailAccount">The email account to use for sending the email.</param>
     /// <remarks>Both "Account Id" and Connector fields need to be set on the <paramref name="EmailAccount"/> parameter.</remarks>
-    /// <returns>True if the email was successfully sent; otherwise - false</returns>
+    /// <returns>True if the email was successfully sent; otherwise - false.</returns>
     procedure Send(EmailMessage: Codeunit "Email Message"; EmailAccount: Record "Email Account" temporary): Boolean
     begin
         exit(EmailImpl.Send(EmailMessage, EmailAccount."Account Id", EmailAccount.Connector));
@@ -122,7 +122,7 @@ codeunit 8901 "Email"
     /// <param name="EmailMessage">The email message to use as payload.</param>
     /// <param name="EmailAccountId">The ID of the email account to use for sending the email.</param>
     /// <param name="EmailConnector">The email connector to use for sending the email.</param>
-    /// <returns>True if the email was successfully sent; otherwise - false</returns>
+    /// <returns>True if the email was successfully sent; otherwise - false.</returns>
     procedure Send(EmailMessage: Codeunit "Email Message"; EmailAccountId: Guid; EmailConnector: Enum "Email Connector"): Boolean
     begin
         exit(EmailImpl.Send(EmailMessage, EmailAccountId, EmailConnector));
