@@ -27,7 +27,7 @@ jobs:
           -auth NavUserPassword 
           -credential ([PSCredential]::new($Env:BC_CONTAINER_USERNAME, (ConvertTo-SecureString -String $Env:BC_CONTAINER_PASSWORD -AsPlainText -Force))) 
           -updateHosts
-          -additionalParameters @("--volume $Env:GITHUB_WORKSPACE\Modules\System`:c:\project")
+          -additionalParameters @("--volume $Env:GITHUB_WORKSPACE\Modules`:c:\project")
           -includeAL
 
       - name: Compile System Application  
