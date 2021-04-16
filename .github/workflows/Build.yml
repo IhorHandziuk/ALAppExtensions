@@ -27,7 +27,7 @@ jobs:
           -auth NavUserPassword 
           -credential ([PSCredential]::new($Env:BC_CONTAINER_USERNAME, (ConvertTo-SecureString -String $Env:BC_CONTAINER_PASSWORD -AsPlainText -Force))) 
           -updateHosts
-          -additionalParameters @("--volume $Env:GITHUB_WORKSPACE\Modules\System`:c:\project")
+          -additionalParameters @("--volume $Env:GITHUB_WORKSPACE\Modules`:c:\project")
           -includeAL
 
       - name: Compile System Application  
@@ -38,5 +38,27 @@ jobs:
           -credential ([PSCredential]::new($Env:BC_CONTAINER_USERNAME, (ConvertTo-SecureString -String $Env:BC_CONTAINER_PASSWORD -AsPlainText -Force))) 
           -appProjectFolder $Env:GITHUB_WORKSPACE\Modules\System
           -appOutputFolder $Env:GITHUB_WORKSPACE\Modules\System
+          -EnableCodeCop
+          -EnableUICop
+
+      - name: Compile System Application Test Libraries
+        shell: powershell
+        run: >
+          Compile-AppInBCContainer 
+          -containerName bcdev 
+          -credential ([PSCredential]::new($Env:BC_CONTAINER_USERNAME, (ConvertTo-SecureString -String $Env:BC_CONTAINER_PASSWORD -AsPlainText -Force))) 
+          -appProjectFolder "$Env:GITHUB_WORKSPACE\Modules\System Test Libraries"
+          -appOutputFolder "$Env:GITHUB_WORKSPACE\Modules\System Test Libraries"
+          -EnableCodeCop
+          -EnableUICop
+
+      - name: Compile System Application Tests
+        shell: powershell
+        run: >
+          Compile-AppInBCContainer 
+          -containerName bcdev 
+          -credential ([PSCredential]::new($Env:BC_CONTAINER_USERNAME, (ConvertTo-SecureString -String $Env:BC_CONTAINER_PASSWORD -AsPlainText -Force))) 
+          -appProjectFolder "$Env:GITHUB_WORKSPACE\Modules\System Tests"
+          -appOutputFolder "$Env:GITHUB_WORKSPACE\Modules\System Tests"
           -EnableCodeCop
           -EnableUICop
