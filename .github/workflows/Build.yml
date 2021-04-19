@@ -33,12 +33,14 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install BcContainerHelper
         shell: powershell
-        run: Install-Module BcContainerHelper -Force
+        run: |
+          # Test comment 1
+          # Test comment 2
+          Install-Module BcContainerHelper -Force
 
       - name: Set up Business Central container
         shell: powershell
         run: |
-          # Test comments
           New-BCContainer `
             -accept_eula `
             -containerName $Env:BC_CONTAINER_NAME `
