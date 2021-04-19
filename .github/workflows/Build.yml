@@ -38,6 +38,7 @@ jobs:
       - name: Set up Business Central container
         shell: powershell
         run: |
+          # Test comments
           New-BCContainer `
             -accept_eula `
             -containerName $Env:BC_CONTAINER_NAME `
