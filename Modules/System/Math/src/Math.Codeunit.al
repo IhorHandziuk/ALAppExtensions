@@ -12,6 +12,15 @@ codeunit 710 Math
 
     var
         DotNetMath: DotNet Math;
+        
+    /// <summary>
+    /// Returns the value of the Golden ration (phi).
+    /// </summary>
+    /// <returns>Value of the Golden ratio.</returns>
+    procedure GoldenRatio(): Decimal
+    begin
+        exit(1.6180339887498948);
+    end;
 
     /// <summary>
     /// Returns the value of pi.
